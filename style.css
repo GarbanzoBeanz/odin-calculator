@@ -11,3 +11,35 @@ body {
   color: #e3e3e3;
   line-height: 1.5;
 }
+
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  background-color:#182135 ;
+  margin:10rem;
+  padding: 2rem;
+  gap:1rem;
+  height:600px;
+  width: 500px;
+  justify-self: center;
+  align-self: center;
+  border-radius: 30px;
+}
+
+.calculator-container h1 {
+  font-size: 1rem;
+}
+
+.calculator-display {
+  background-color: #101622;
+  height: 7rem;
+  border-radius: 15px;
+  display:flex;
+  align-items: center;
+  justify-content:flex-end;
+}
+
+.display-content {
+  font-size: 3rem;
+  margin: 1rem;
+}
