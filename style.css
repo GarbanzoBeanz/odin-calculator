@@ -16,11 +16,11 @@ body {
   display: flex;
   flex-direction: column;
   background-color:#182135 ;
-  margin:10rem;
+  margin:5rem;
   padding: 2rem;
   gap:1rem;
-  height:600px;
-  width: 500px;
+  height:45rem;
+  width: 25rem;
   justify-self: center;
   align-self: center;
   border-radius: 30px;
@@ -42,4 +42,48 @@ body {
 .display-content {
   font-size: 3rem;
   margin: 1rem;
+}
+
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 1rem;
+  background-color: #101622;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+button[data-operator],
+button[data-symbol] {
+  background-color: #006AF9;
+}
+button[data-number],
+button[data-operator="decimal-point"],
+button[data-operator="clear"] {
+  background-color: #182135;
+}
+
+.calculator-buttons button{
+  font-size: 1.5rem;
+  color: #e3e3e3;
+  border: none;
+  border-radius: 7px;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button[data-operator="clear-all"] {
+  grid-column: span 3;
+  background-color: #ff4c4c;
+}
+
+button[data-operator="equals"] {
+  grid-row: span 2;
+  height: calc(4rem * 2 + 1rem); /* 2 button heights + 1 gap */
+  background-color: #0095f9;
 }
