@@ -12,7 +12,6 @@ body {
   line-height: 1.5;
   min-height: 100vh;
   display: flex;
-  flex-grow: 1;
   justify-content: center;
   flex-direction: column;
 }
@@ -93,6 +92,10 @@ button[data-operator="equals"] {
   background-color: #0095f9;
 }
 
+.calculator-buttons button:hover{
+  background-color: #3c475e;
+}
+
 /* ========== FOOTER ========== */
 .footer-container {
   text-align: center;
@@ -109,5 +112,5 @@ button[data-operator="equals"] {
 }
 
 .footer-container a:hover {
-  color: #1abc9c;
+  color: #006AF9;
 }
