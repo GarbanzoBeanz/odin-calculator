@@ -1,4 +1,4 @@
-/* Initialize / Reset */
+/* ========== INITIALIZE ========== */
 *{
   margin: 0;
   padding: 0;
@@ -10,13 +10,18 @@ body {
   background-color: #1c2841;
   color: #e3e3e3;
   line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  flex-direction: column;
 }
 
+/* ========== MAIN ========== */
 .calculator-container {
   display: flex;
   flex-direction: column;
   background-color:#182135 ;
-  margin:5rem;
   padding: 2rem;
   gap:1rem;
   height:45rem;
@@ -86,4 +91,23 @@ button[data-operator="equals"] {
   grid-row: span 2;
   height: calc(4rem * 2 + 1rem); /* 2 button heights + 1 gap */
   background-color: #0095f9;
+}
+
+/* ========== FOOTER ========== */
+.footer-container {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  background-color: inherit;
+  margin-top: auto;
+}
+
+.footer-container a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer-container a:hover {
+  color: #1abc9c;
 }
