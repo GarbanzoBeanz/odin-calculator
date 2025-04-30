@@ -1,0 +1,13 @@
+/* Initialize / Reset */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:'Courier New', Courier, monospace;
+  background-color: #1c2841;
+  color: #e3e3e3;
+  line-height: 1.5;
+}
