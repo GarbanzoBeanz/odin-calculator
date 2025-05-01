@@ -1,10 +1,27 @@
 'use strict';
 // ==== Initialize ==== //
-// displayValue = 0
-// firstOperand is empty
-// secondOperand is empty
-// currentOperator is empty
-// waitingForSecondOperand is false
+let displayValue = 0;
+let firstOperand = null;
+let secondOperand = null;
+let currentOperator = null;
+let waitingForSecondOperand = false;
+
+// ==== Query Selectors ==== //
+
+const DOM = {
+  display: document.querySelector('.display-content'),
+
+  numbers: document.querySelectorAll('button[data-number]'),
+  operators: document.querySelectorAll('button[data-operator]'),
+
+  equals: document.querySelector('button[data-operator="equals"]'),
+  clear: document.querySelector('button[data-operator="clear"]'),
+  clearAll: document.querySelector('button[data-operator="clear-all"]'),
+  decimal: document.querySelector('button[data-operator="decimal-point"]'),
+  backspace: document.querySelector('button[data-operator="backspace"]'),
+
+  decimal: document.querySelector('button[data-symbol="decimal-point"]'),
+};
 
 // ==== Event Listeners ==== //
 // for each button:
