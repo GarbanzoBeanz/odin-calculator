@@ -45,7 +45,7 @@ DOM.buttons.forEach(button => {
       handleDecimal();
 
     }else if(btn.dataset.operator !== undefined){ //had to move this to the end
-      handleOperator(operator);
+      handleOperator(btn.dataset.operator);
     };
   });
 });
@@ -62,18 +62,19 @@ function handleNumberInput(clickedNumber) {
       displayValue += clickedNumber;
     }
   }
+
   updateDisplay();
-}
-// ==== handleNumInput ==== //
-// if waitingForSecondOperand is true
-//  displayValue = clickedNumber
-//  waitingForSecondOperand = false
-// else
-//    if displayValue is 0
-//      displayValue = 0
-//    else
-//      append clicked number to displayValue
-// update the display
+};
+
+function handleOperator(operator) {
+  if(currentOperator && !waitingForSecondOperand) {
+    handleEquals()
+  };
+
+  firstOperand = Number(displayValue);
+  currentOperator = operator;
+  waitingForSecondOperand = true;
+};
 
 // ==== handleOperator ==== //
 // if currentOperator exists AND waitingForSecondOperand is false
