@@ -3,6 +3,7 @@
 // displayValue = 0
 // firstOperand is empty
 // secondOperand is empty
+// currentOperator is empty
 // waitingForSecondOperand is false
 
 // ==== Event Listeners ==== //
@@ -10,8 +11,8 @@
 //  if the button is a number then call handleNumInput(value)
 //  if button is an operator then call handleOperator(operator)
 //  if the button is equals then call handleEquals()
-//  if the button is clear-all (AC) then call resetCalculator()
-//  if the button is clear (C) then call deleteLastDigit()
+//  if the button is clear-all (AC/full reset) then call handleClearAll()
+//  if the button is clear (C/backspace) then call handleBackspace()
 //  if the button is a decimal addSymbol(value)
 
 // ==== handleNumInput ==== //
@@ -72,3 +73,19 @@
 //    if number has more than X decimals,
 //      return rounded version,
 //    else return number
+
+// ==== Clear & Clear All ==== //
+// clear-all (full reset)
+// handleClearAll()
+//  displayValue = 0
+//  firstOperand is empty
+//  secondOperand is empty
+//  currentOperator is empty
+//  waitingForSecondOperand is false
+//  updateDisplay
+
+// handleBackspace()
+//  if displayValue length > 1
+//    remove last char
+//  else displayValue = 0
+//  updateDisplay
