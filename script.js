@@ -138,10 +138,30 @@ function handleBackspace() {
   } else {
     displayValue = '0';
     historyValue = '0';
-  }
+  };
   updateHistory();
   updateDisplay();
-}
+};
+
+function handleDecimal() {
+  if(waitingForSecondOperand){
+    displayValue = "0.";
+    historyValue = "0.";
+    waitingForSecondOperand = false;
+
+    updateHistory();
+    updateDisplay();
+    return;
+  };
+
+  if(!displayValue.includes('.')){
+    displayValue += '.';
+    historyValue += '.';
+    updateDisplay();
+    updateHistory();
+  };
+};
+
 // ==== Operator Logic ==== //
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
@@ -202,25 +222,6 @@ function formatResult(num) {
   };
 };
 
-// ==== Clear & Clear All ==== //
-
-
-// handleBackspace()
-//  if displayValue length > 1
-//    remove last char
-//  else displayValue = 0
-//  updateDisplay
-
-// ==== handleDecimal ==== //
-// if waitingForSecondOperand is true
-//    displayValue = 0
-//    waitingForSecondOperand = false
-//    updateDisplay
-//    return
-//
-//  if displayValue does not include '.' then
-//    append . to displayValue
-//    updateDisplay
 
 // ==== keyboard support ==== //
 // onkeydown:
