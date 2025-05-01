@@ -60,8 +60,8 @@ function handleNumberInput(clickedNumber) {
       displayValue = clickedNumber;
     } else {
       displayValue += clickedNumber;
-    }
-  }
+    };
+  };
 
   updateDisplay();
 };
@@ -76,32 +76,26 @@ function handleOperator(operator) {
   waitingForSecondOperand = true;
 };
 
-// ==== handleOperator ==== //
-// if currentOperator exists AND waitingForSecondOperand is false
-//   handleEquals()
-//
-//  firstOperand = Number(displayValue)
-//  currentOperator = operator
-//  waitingForSecondOperand = true
+function handleEquals() {
+  if (!currentOperator || waitingForSecondOperand) {
+    return
+  };
 
+  secondOperand = Number(displayValue);
+  let result = operator(currentOperator, firstOperand, secondOperand);
 
-// ====  handleEquals ==== //
-// called when equals is clicked
-//  if currentOperator is null OR waitingforSecondOperand
-//    return (do nothing)
-//
-//  secondOperand = Number(displayValue)
-//  result = operator(currentOperator, firstOperand, secondOperand)
-//
-//  if result is "ERROR"
-//    displayValue = "SyntaxError"
-//  else
-//    displayValue = formatResult(result)
-//  
-//  firstOperand = result
-//  currentOperator = null
-//  waitingForSecondOperand = true
-//  updateDisplay()
+  if(result === 'ERROR') {
+    displayValue = 'SyntaxError';
+  } else {
+    displayValue = formatResult(result);
+  };
+
+  firstOperand = result;
+  currentOperator = null;
+  waitingForSecondOperand = true;
+  updateDisplay();
+};
+
 
 // ==== operator functions ==== //
 // logic that adds (return a + b)
