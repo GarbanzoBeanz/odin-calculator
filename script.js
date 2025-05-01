@@ -25,3 +25,13 @@
 //      append clicked number to displayValue
 // update the display
 
+// === handleOperator ====
+// if currentOperator exists AND waitingForSecondOperand is false
+//   result = evaluateFormula(currentOperator, firstOperand, Number(displayValue))
+//   displayValue = result
+//   firstOperand = result
+// else 
+//   firstOperand = Number(displayValue)
+
+// currentOperator = clicked operator 
+// waitingForSecondOperand = true 
