@@ -9,10 +9,10 @@
 // for each button:
 //  if the button is a number then call handleNumInput(value)
 //  if button is an operator then call handleOperator(operator)
-//  if the button is equals then call evaluateFormula()
+//  if the button is equals then call handleEquals()
 //  if the button is clear-all (AC) then call resetCalculator()
 //  if the button is clear (C) then call deleteLastDigit()
-//  if the button is a decimal or parenthesis call addSymbol(value)
+//  if the button is a decimal addSymbol(value)
 
 // ==== handleNumInput ==== //
 // if waitingForSecondOperand is true
@@ -25,13 +25,29 @@
 //      append clicked number to displayValue
 // update the display
 
-// === handleOperator ====
+// ==== handleOperator ==== //
 // if currentOperator exists AND waitingForSecondOperand is false
-//   result = evaluateFormula(currentOperator, firstOperand, Number(displayValue))
-//   displayValue = result
-//   firstOperand = result
-// else 
-//   firstOperand = Number(displayValue)
+//   handleEquals()
+//
+//  firstOperand = Number(displayValue)
+//  currentOperator = operator
+//  waitingForSecondOperand = true
 
-// currentOperator = clicked operator 
-// waitingForSecondOperand = true 
+
+// ====  handleEquals ==== //
+// called when equals is clicked
+//  if currentOperator is null OR waitingforSecondOperand
+//    return (do nothing)
+//
+//  secondOperand = Number(displayValue)
+//  result = operator(currentOperator, firstOperand, secondOperand)
+//
+//  if result is "ERROR"
+//    displayValue = "SyntaxError"
+//  else
+//    displayValue = result
+//  
+//  firstOperand = result
+//  currentOperator = null
+//  waitingForSecondOperand = true
+//  updateDisplay ()
