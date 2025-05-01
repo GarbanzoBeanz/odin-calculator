@@ -51,3 +51,15 @@
 //  currentOperator = null
 //  waitingForSecondOperand = true
 //  updateDisplay ()
+
+// ==== operator functions ==== //
+// logic that adds (return a + b)
+// logic that subtracts (return a - b)
+// logic that multiplies (return a * b)
+// logic that divides (if b===0 return error else return a/b)
+
+// logic that returns the operation
+//  if operate = + return adds logic
+//  else if operate = - return subtracts logic
+//  else if operate = * return multiplies logic
+//  else if operate = / return divides logic
