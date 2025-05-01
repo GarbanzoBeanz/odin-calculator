@@ -38,13 +38,19 @@ body {
   height: 7rem;
   border-radius: 15px;
   display:flex;
-  align-items: center;
-  justify-content:flex-end;
+  align-items: flex-end;
+  justify-content:space-around;
+  flex-direction: column;
 }
 
 .display-content {
   font-size: 3rem;
-  margin: 1rem;
+  margin: 0.5rem;
+}
+.display-history {
+  font-size: 1rem;
+  color: #aaa;
+  margin: 0.5rem;
 }
 
 .calculator-buttons {
