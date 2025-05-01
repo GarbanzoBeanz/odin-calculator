@@ -130,14 +130,29 @@ function operate(operator, a, b) {
   };
 };
 
+function hasMoreThanTwoDecimals(num) {
+  const numberString = num.toString();
+  if (numberString.indexOf('.') === -1) {
+    return false;
+  }
+  const decimals = numberString.split('.')[1];
+  return decimals.length > 2;
+};
+
+function formatResult(num) {
+  if(hasMoreThanTwoDecimals(num)) {
+    return parseFloat(num).toFixed(2);
+  } else {
+    return num;
+  };
+};
+
 // ==== Display logic ==== //
-// updateDisplay()
-//    change display element's text content to displayValue
-//
-// formatResult(number)
-//    if number has more than X decimals,
-//      return rounded version,
-//    else return number
+function updateDisplay() {
+  DOM.display.textContent = displayValue;
+};
+
+
 
 // ==== Clear & Clear All ==== //
 // clear-all (full reset)
