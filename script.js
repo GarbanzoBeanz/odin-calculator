@@ -97,6 +97,14 @@ function handleEquals() {
   updateDisplay();
 };
 
+function handleClearAll() {
+  displayValue = 0;
+  firstOperand = null;
+  secondOperand = null;
+  currentOperator = null;
+  waitingForSecondOperand = false;
+  updateDisplay()
+};
 
 // ==== Operator Logic ==== //
 const add = (a, b) => a + b;
@@ -130,6 +138,13 @@ function operate(operator, a, b) {
   };
 };
 
+// ==== Display Logic ==== //
+function updateDisplay() {
+  DOM.display.textContent = displayValue;
+};
+
+
+// ==== Utility Logic ==== //
 function hasMoreThanTwoDecimals(num) {
   const numberString = num.toString();
   if (numberString.indexOf('.') === -1) {
@@ -147,22 +162,8 @@ function formatResult(num) {
   };
 };
 
-// ==== Display logic ==== //
-function updateDisplay() {
-  DOM.display.textContent = displayValue;
-};
-
-
-
 // ==== Clear & Clear All ==== //
-// clear-all (full reset)
-// handleClearAll()
-//  displayValue = 0
-//  firstOperand is empty
-//  secondOperand is empty
-//  currentOperator is empty
-//  waitingForSecondOperand is false
-//  updateDisplay
+
 
 // handleBackspace()
 //  if displayValue length > 1
