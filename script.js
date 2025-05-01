@@ -46,9 +46,24 @@ DOM.buttons.forEach(button => {
 
     }else if(btn.dataset.operator !== undefined){ //had to move this to the end
       handleOperator(operator);
+    };
+  });
+});
+
+function handleNumberInput(clickedNumber) {
+  if(waitingForSecondOperand) { //starting fresh if operator has just been selected
+    displayValue = clickedNumber;
+    waitingForSecondOperand = false;
+  
+  }else {
+    if(displayValue ===  0) {
+      displayValue = clickedNumber;
+    } else {
+      displayValue += clickedNumber;
     }
-  })
-})
+  }
+  updateDisplay();
+}
 // ==== handleNumInput ==== //
 // if waitingForSecondOperand is true
 //  displayValue = clickedNumber
