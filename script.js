@@ -10,28 +10,45 @@ let waitingForSecondOperand = false;
 
 const DOM = {
   display: document.querySelector('.display-content'),
+  buttons: document.querySelectorAll('button'),
 
-  numbers: document.querySelectorAll('button[data-number]'),
-  operators: document.querySelectorAll('button[data-operator]'),
+  number: document.querySelectorAll('button[data-number]'),
+  operator: document.querySelectorAll('button[data-operator]'),
+  symbol: document.querySelector('button[data-symbol]'),
 
   equals: document.querySelector('button[data-operator="equals"]'),
   clear: document.querySelector('button[data-operator="clear"]'),
   clearAll: document.querySelector('button[data-operator="clear-all"]'),
-  decimal: document.querySelector('button[data-operator="decimal-point"]'),
   backspace: document.querySelector('button[data-operator="backspace"]'),
 
   decimal: document.querySelector('button[data-symbol="decimal-point"]'),
 };
 
 // ==== Event Listeners ==== //
-// for each button:
-//  if the button is a number then call handleNumInput(value)
-//  if button is an operator then call handleOperator(operator)
-//  if the button is equals then call handleEquals()
-//  if the button is clear-all (AC/full reset) then call handleClearAll()
-//  if the button is clear (C/backspace) then call handleBackspace()
-//  if the button is a decimal then call handleDecimal()
+DOM.buttons.forEach(button => {
+  button.addEventListener('click' , event => {
+    const btn = event.target;
 
+    if(btn.dataset.number !== undefined) {
+      handleNumberInput(btn.dataset.number);
+    
+    }else if(btn.dataset.operator === 'equals') {
+      handleEquals();
+
+    }else if(btn.dataset.operator === 'clear-all') {
+      handleClearAll();
+
+    }else if(btn.dataset.operator === 'clear') {
+      handleBackspace();
+
+    }else if(btn.dataset.symbol === 'decimal-point') {
+      handleDecimal();
+
+    }else if(btn.dataset.operator !== undefined){ //had to move this to the end
+      handleOperator(operator);
+    }
+  })
+})
 // ==== handleNumInput ==== //
 // if waitingForSecondOperand is true
 //  displayValue = clickedNumber
