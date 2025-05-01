@@ -45,12 +45,12 @@
 //  if result is "ERROR"
 //    displayValue = "SyntaxError"
 //  else
-//    displayValue = result
+//    displayValue = formatResult(result)
 //  
 //  firstOperand = result
 //  currentOperator = null
 //  waitingForSecondOperand = true
-//  updateDisplay ()
+//  updateDisplay()
 
 // ==== operator functions ==== //
 // logic that adds (return a + b)
@@ -63,3 +63,12 @@
 //  else if operate = - return subtracts logic
 //  else if operate = * return multiplies logic
 //  else if operate = / return divides logic
+
+// ==== Display logic ==== //
+// updateDisplay()
+//    change display element's text content to displayValue
+//
+// formatResult(number)
+//    if number has more than X decimals,
+//      return rounded version,
+//    else return number
