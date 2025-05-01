@@ -131,6 +131,17 @@ function handleClearAll() {
   updateDisplay();
 };
 
+function handleBackspace() {
+  if (displayValue.length > 1) {
+    displayValue = displayValue.slice(0, -1);
+    historyValue = historyValue.slice(0, -1);
+  } else {
+    displayValue = '0';
+    historyValue = '0';
+  }
+  updateHistory();
+  updateDisplay();
+}
 // ==== Operator Logic ==== //
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
