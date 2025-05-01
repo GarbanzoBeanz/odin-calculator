@@ -7,13 +7,6 @@ let currentOperator = null;
 let waitingForSecondOperand = false;
 let historyValue = '';
 
-const operatorSymbols = {
-  plus: "+",
-  minus: "−",
-  multiply: "×",
-  divide: "÷",
-  percent: "%",
-};
 
 // ==== Query Selectors ==== //
 
@@ -89,7 +82,7 @@ function handleOperator(operator) {
   firstOperand = Number(displayValue);
   currentOperator = operator;
   waitingForSecondOperand = true;
-  historyValue = `${firstOperand} ${operatorSymbols[operator]}`
+  historyValue = `${firstOperand} ${currentOperator}`
   updateHistory(); 
 };
 
@@ -107,7 +100,7 @@ function handleEquals() {
     displayValue = formatResult(result);
   };
 
-  historyValue = `${firstOperand} ${operatorSymbols[currentOperator]} 
+  historyValue = `${firstOperand} ${currentOperator} 
   ${secondOperand} = ${result}`
   updateHistory(); 
 
@@ -176,19 +169,19 @@ const divide = (a, b) => {
 
 function operate(operator, a, b) {
   switch(operator) {
-    case 'plus': 
+    case '+': 
       return add(a, b)
     break;
       
-    case 'minus': 
+    case '-': 
       return subtract(a, b)
     break;
 
-    case 'multiply': 
+    case '*': 
       return multiply(a, b)
     break;
 
-    case 'divide': 
+    case '/': 
       return divide(a, b)
     break;
   };
@@ -222,12 +215,36 @@ function formatResult(num) {
   };
 };
 
+document.addEventListener('keydown', (event) => {
+  const key = event.key;
 
-// ==== keyboard support ==== //
-// onkeydown:
-// if key is number, call handleNumberInputs
-// if key is operator, call handleOperator
-// if key is enter or =, call handleEquals
-// if key is backspace: call handleBackspace
-// if key is escape call handleClear
-// if key is . call handleDecimal
+  if (!isNaN(key)) {
+    handleNumberInput(key);
+    return;
+  }
+
+  if (['+', '-', '*', '/'].includes(key)) {
+    handleOperator(key);
+    return;
+  }
+
+  if (key === 'Enter' || key === '=') {
+    event.preventDefault(); // Prevent form submission or default behaviors
+    handleEquals();
+    return;
+  }
+
+  if (key === 'Backspace') {
+    handleBackspace();
+    return;
+  }
+
+  if (key === 'Escape') {
+    handleClearAll();
+    return;
+  }
+
+  if (key === '.') {
+    handleDecimal();
+  }
+});
