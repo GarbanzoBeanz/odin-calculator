@@ -50,6 +50,7 @@ DOM.buttons.forEach(button => {
   });
 });
 
+// ==== Calculator Logic ==== //
 function handleNumberInput(clickedNumber) {
   if(waitingForSecondOperand) { //starting fresh if operator has just been selected
     displayValue = clickedNumber;
@@ -82,7 +83,7 @@ function handleEquals() {
   };
 
   secondOperand = Number(displayValue);
-  let result = operator(currentOperator, firstOperand, secondOperand);
+  let result = operate(currentOperator, firstOperand, secondOperand);
 
   if(result === 'ERROR') {
     displayValue = 'SyntaxError';
@@ -97,17 +98,37 @@ function handleEquals() {
 };
 
 
-// ==== operator functions ==== //
-// logic that adds (return a + b)
-// logic that subtracts (return a - b)
-// logic that multiplies (return a * b)
-// logic that divides (if b===0 return error else return a/b)
+// ==== Operator Logic ==== //
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => {
+  if(b === 0) {
+    return 'ERROR';
+  } else {
+    return a/b;
+  };
+};
 
-// logic that returns the operation
-//  if operate = + return adds logic
-//  else if operate = - return subtracts logic
-//  else if operate = * return multiplies logic
-//  else if operate = / return divides logic
+function operate(operator, a, b) {
+  switch(operator) {
+    case 'plus': 
+      return add(a, b)
+    break;
+      
+    case 'minus': 
+      return subtract(a, b)
+    break;
+
+    case 'multiply': 
+      return multiply(a, b)
+    break;
+
+    case 'divide': 
+      return divide(a, b)
+    break;
+  };
+};
 
 // ==== Display logic ==== //
 // updateDisplay()
