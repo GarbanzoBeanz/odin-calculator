@@ -5,11 +5,21 @@ let firstOperand = null;
 let secondOperand = null;
 let currentOperator = null;
 let waitingForSecondOperand = false;
+let historyValue = '';
+
+const operatorSymbols = {
+  plus: "+",
+  minus: "−",
+  multiply: "×",
+  divide: "÷",
+  percent: "%",
+};
 
 // ==== Query Selectors ==== //
 
 const DOM = {
   display: document.querySelector('.display-content'),
+  history: document.querySelector('.display-history'),
   buttons: document.querySelectorAll('button'),
 
   number: document.querySelectorAll('button[data-number]'),
@@ -53,17 +63,21 @@ DOM.buttons.forEach(button => {
 // ==== Calculator Logic ==== //
 function handleNumberInput(clickedNumber) {
   if(waitingForSecondOperand) { //starting fresh if operator has just been selected
-    displayValue = clickedNumber;
+    displayValue = clickedNumber;;
     waitingForSecondOperand = false;
+    historyValue += ' ' + clickedNumber;
   
   }else {
     if(displayValue ===  0) {
       displayValue = clickedNumber;
+      historyValue = clickedNumber;
     } else {
       displayValue += clickedNumber;
+      historyValue += clickedNumber;
     };
   };
 
+  updateHistory()
   updateDisplay();
 };
 
@@ -75,6 +89,8 @@ function handleOperator(operator) {
   firstOperand = Number(displayValue);
   currentOperator = operator;
   waitingForSecondOperand = true;
+  historyValue = `${firstOperand} ${operatorSymbols[operator]}`
+  updateHistory(); 
 };
 
 function handleEquals() {
@@ -91,9 +107,15 @@ function handleEquals() {
     displayValue = formatResult(result);
   };
 
+  historyValue = `${firstOperand} ${operatorSymbols[currentOperator]} 
+  ${secondOperand} = ${result}`
+  updateHistory(); 
+
   firstOperand = result;
   currentOperator = null;
   waitingForSecondOperand = true;
+  historyValue = '';
+
   updateDisplay();
 };
 
@@ -103,7 +125,10 @@ function handleClearAll() {
   secondOperand = null;
   currentOperator = null;
   waitingForSecondOperand = false;
-  updateDisplay()
+  historyValue = 'History';
+
+  updateHistory();
+  updateDisplay();
 };
 
 // ==== Operator Logic ==== //
@@ -141,6 +166,10 @@ function operate(operator, a, b) {
 // ==== Display Logic ==== //
 function updateDisplay() {
   DOM.display.textContent = displayValue;
+};
+
+function updateHistory() {
+  DOM.history.textContent = historyValue;
 };
 
 
