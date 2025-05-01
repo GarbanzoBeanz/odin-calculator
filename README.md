@@ -8,7 +8,8 @@ A simple browser-based calculator built as a part of The Odin Project's Calculat
 
 - A display
 - Numbers 0 - 9
-- Math operators (=,+,-,*,/,%,(),)
+- Math operators (=,+,-,*,/)
+- Decimal Point 
 - Backspace and Clear buttons
 
 ---
