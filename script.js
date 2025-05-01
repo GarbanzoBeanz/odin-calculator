@@ -1,4 +1,6 @@
 'use strict';
+// ==== Initialize ==== //
+// displayValue = 0
 
 // ==== Event Listeners ==== //
 // for each button:

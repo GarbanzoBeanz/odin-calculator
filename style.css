@@ -23,7 +23,6 @@ body {
   background-color:#182135 ;
   padding: 2rem;
   gap:1rem;
-  height:45rem;
   width: 25rem;
   justify-self: center;
   align-self: center;
@@ -51,7 +50,7 @@ body {
 .calculator-buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-  gap: 1rem;
+  gap: 0.5rem;
   background-color: #101622;
   padding: 1rem;
   border-radius: 15px;
@@ -87,8 +86,6 @@ button[data-operator="clear-all"] {
 }
 
 button[data-operator="equals"] {
-  grid-row: span 2;
-  height: calc(4rem * 2 + 1rem); /* 2 button heights + 1 gap */
   background-color: #0095f9;
 }
 
