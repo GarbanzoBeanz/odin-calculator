@@ -13,7 +13,7 @@
 //  if the button is equals then call handleEquals()
 //  if the button is clear-all (AC/full reset) then call handleClearAll()
 //  if the button is clear (C/backspace) then call handleBackspace()
-//  if the button is a decimal addSymbol(value)
+//  if the button is a decimal then call handleDecimal()
 
 // ==== handleNumInput ==== //
 // if waitingForSecondOperand is true
@@ -89,3 +89,14 @@
 //    remove last char
 //  else displayValue = 0
 //  updateDisplay
+
+// ==== handleDecimal ==== //
+// if waitingForSecondOperand is true
+//    displayValue = 0
+//    waitingForSecondOperand = false
+//    updateDisplay
+//    return
+//
+//  if displayValue does not include '.' then
+//    append . to displayValue
+//    updateDisplay
