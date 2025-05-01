@@ -100,3 +100,12 @@
 //  if displayValue does not include '.' then
 //    append . to displayValue
 //    updateDisplay
+
+// ==== keyboard support ==== //
+// onkeydown:
+// if key is number, call handleNumberInputs
+// if key is operator, call handleOperator
+// if key is enter or =, call handleEquals
+// if key is backspace: call handleBackspace
+// if key is escape call handleClear
+// if key is . call handleDecimal
